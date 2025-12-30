@@ -1,13 +1,13 @@
 -- Crear la base de datos
-CREATE DATABASE EjemploEmpresa;
+CREATE DATABASE Empresa;
 GO
 
 -- Usar la base de datos
-USE EjemploEmpresa;
+USE Empresa;
 GO
 
 -- Crear tabla (v2)
-CREATE TABLE Empleados
+CREATE TABLE Empleados1
 (
     -- ID como clave primaria con autoincremento
     EmpleadoID INT IDENTITY(1,1) PRIMARY KEY,
@@ -47,13 +47,13 @@ CREATE TABLE Empleados
 GO
 
 -- Crear índices adicionales para mejorar el rendimiento
-CREATE INDEX IX_Empleados_Email ON Empleados(Email);
-CREATE INDEX IX_Empleados_FechaContratacion ON Empleados(FechaContratacion);
-CREATE INDEX IX_Empleados_Activo ON Empleados(Activo) WHERE Activo = 1;
+CREATE INDEX IX_Empleados_Email ON Empleados1(Email);
+CREATE INDEX IX_Empleados_FechaContratacion ON Empleados1(FechaContratacion);
+CREATE INDEX IX_Empleados_Activo ON Empleados1(Activo) WHERE Activo = 1;
 GO
 
 -- Insertar datos de ejemplo
-INSERT INTO Empleados
+INSERT INTO Empleados1
     (Nombre, Apellido, Email, Telefono, Edad, Salario, Comision,
     FechaNacimiento, TieneSeguro, Observaciones)
 VALUES
@@ -67,11 +67,11 @@ GO
 
 -- Consultar los datos
 SELECT *
-FROM Empleados;
+FROM Empleados1;
 
 
 -- Crear tabla (v1)
-CREATE TABLE dbo.Employees
+CREATE TABLE dbo.Empleados2
 (
     -- Clave primaria autoincremental
     EmployeeID INT IDENTITY(1,1) NOT NULL,
@@ -100,3 +100,8 @@ CREATE TABLE dbo.Employees
     -- Clave primaria (indice clustered por defecto)
     CONSTRAINT PK_Employees PRIMARY KEY CLUSTERED (EmployeeID)
 );
+GO
+
+-- Consultar los datos
+SELECT *
+FROM Empleados2;
